@@ -1,0 +1,163 @@
+#%RAML 1.0
+title: Test Assignment: Movie Favorites App
+version: 1.0
+
+/movie:
+  displayName: Movie
+  post:
+    description: "Add move from serach result to application database."
+    queryParameters:
+      external_id:
+        description: "Move id from themoviedb site"
+        example: 153433
+        required: true
+        type: integer
+    responses:
+      200:
+        body:
+          application/json:
+
+  /{movieId}:
+    get:
+      description: "Get the primary information about a movie."
+    responses:
+      200:
+        body:
+          application/json:
+
+  /search:
+    post:
+      description: "Search for movies."
+      queryParameters:
+        query:
+          description: "Pass a text query to search. This value should be URI encoded."
+          example: "The Spring"
+          required: true
+          type: string
+        page:
+          description: "Specify which page to query."
+          example: 1
+          required: false
+          type: integer
+      responses:
+        200:
+          body:
+            application/json:
+
+/list:
+  displayName: List Of Movies
+
+  get:
+    description: "Get a list of users favorite movies."
+    responses:
+      200:
+        body:
+          application/json:
+
+  post:
+    description: "Create a list."
+    queryParameters:
+      name:
+        description: "Name of a new list."
+        example: "My Movies"
+        required: true
+        type: string
+    responses:
+      200:
+        body:
+          application/json:
+
+  /{listId}:
+    uriParameters:
+      listId:
+        required: true
+        type: integer
+    get:
+      description: "Get the details of a list."
+      responses:
+        200:
+          body:
+            application/json:
+    delete:
+      description: "Delete a list."
+      responses:
+        200:
+          body:
+            application/json:
+
+    /rename:
+      post:
+        description: "Rename the list."
+        queryParameters:
+          newName:
+            description: "New name of the list."
+            example: "Old Movies"
+            required: true
+            type: string
+        responses:
+          200:
+            body:
+              application/json:
+
+    /movie:
+      post:
+        description: "Add a movie to a list."
+        queryParameters:
+          external_id:
+            description: "Movie id from themoviedb site."
+            example: 12422
+            required: true
+            type: integer
+        responses:
+          200:
+            body:
+              application/json:
+
+      /{movieId}:
+        delete:
+          description: "Delete the movie from the list."
+          responses:
+            200:
+              body:
+                application/json:
+
+  /move/{newListId}:
+    post:
+      description: "Move movie from current list to another list."
+      queryParameters:
+        moveId:
+          description: "Movie id from moving."
+          example: 54
+          required: true
+          type: integer
+      responses:
+        200:
+          body:
+            application/json:
+
+/user:
+  displayName: User
+  post:
+    description: "Add new user."
+    queryParameters:
+      userName:
+        description: "Name of the new user"
+        example: "Bob"
+        required: true
+        type: string
+      password:
+        description: "Password of the new user"
+        example: "qwerty"
+        required: true
+        type: string
+    responses:
+      200:
+        body:
+          application/json:
+
+  /{userId}:
+    description: "Get the details information about the user."
+    responses:
+      200:
+        body:
+          application/json:

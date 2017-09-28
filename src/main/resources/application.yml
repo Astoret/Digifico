@@ -1,0 +1,31 @@
+spring:
+    main:
+        banner-mode: "off"
+
+    datasource:
+        platform: h2
+        hibernate:
+          ddl-auto: create-drop
+
+jdbc:
+  username: sa
+  password:
+  url: jdbc:h2:mem:movie_mem
+  driverClassName: org.h2.Driver
+
+security:
+    admin:
+        name: admin
+        password: 1234
+
+tmdb:
+    scheme: https
+    host: api.themoviedb.org
+    path:
+        search: 3/search/movie
+        movie: 3/movie
+    itemsPerPage: 20
+    apiKey: 7a4de0fe5da237bdb52d1168dae8cd14
+
+web:
+  itemsPerPage: 5
