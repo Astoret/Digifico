@@ -12,5 +12,6 @@ public interface Constants {
     String ERROR_LIST_NOT_FOUND = "List not found.";
     String ERROR_MOVIE_NOT_FOUND = "Movie not found.";
     String ERROR_LIST_NAME_TAKEN = "List with this name is already exists.";
+    String ERROR_BAD_REQUEST = "Bad Request.";
 
 }
